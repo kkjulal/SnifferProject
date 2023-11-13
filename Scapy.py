@@ -10,19 +10,23 @@ from scapy.layers.inet import IP, ICMP, TCP
 
 def fullsniff(): #performs a full capture of packets
     amt = captureamt()
+    print("\n FULL CAPTURE STARTED\n")
     capture = scapy.sniff(count=amt)
     print(capture.show())
+    dummysavepdf(capture)
 
-def sourceip():
+def ip():
     amt = captureamt()
-    capture = scapy.sniff(count=amt)
+    capture = scapy.sniff(filter='ip', count=amt)
     print(capture.show())
+    dummysavepdf(capture)
 
 
-def destinip(): #captures all destination ip
+def ipv6(): #captures all destination ip
     amt = captureamt()
-    capture = scapy.sniff(count=amt)
+    capture = scapy.sniff(filter='ipv6', count=amt)
     print(capture.show())
+    dummysavepdf(capture)
 
 def tcp():
     amt = captureamt()
@@ -38,7 +42,7 @@ def udp():
 
 def wifi():
     amt = captureamt()
-    capture = scapy.sniff(iface="wlan0", count=amt)
+    capture = scapy.sniff(iface="wifi0", count=amt)
     print(capture.show())
     dummysavepdf(capture)
 
@@ -48,17 +52,14 @@ def ethernet():
     print(capture.show())
     dummysavepdf(capture)
 
-def ports():
+def protoport():
     amt = captureamt()
-    capture = scapy.sniff(filter="port 443", count=amt)
+    protocol = input("Enter protocol: ")
+    portnum = input("Enter port: ")
+    capture = scapy.sniff(filter=""+protocol+" port "+portnum+"", count=amt)
     print(capture.show())
     dummysavepdf(capture)
 
-def http():
-    amt = captureamt()
-    capture = scapy.sniff(filter="port https", count=amt)
-    print(capture.show())
-    dummysavepdf(capture)
 
 def dummysavepdf(data):
 
@@ -71,13 +72,14 @@ def dummysavepdf(data):
             print("Invalid entry. Try again.")
             continue
         if option == 1:
-            print("\nCSV Saved")
+            print("\nPDF Saved.\n")
             break
         elif option == 2:
             print("\nOk. Returning to main")
             break
         else:
             print("\nInvalid entry. Try again.\n")
+
 
 def captureamt(): #//sets the amount of packets to be captured
 

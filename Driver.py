@@ -13,14 +13,13 @@ def menu():
     print("\n ROCKET SNIFFER TOOL")
     print("""
     1. Full Capture
-    2. Get Source IP data
-    3. Get Destination IP data
+    2. Get IP data
+    3. Get IPV6 data
     4. Get TCP Protocol data
     5. Get UDP Protocol data
     6. Get WiFi data
     7. Get Ethernet data
-    8. Get Port 53 & 80 data
-    9. Get Port HTTPS data
+    8. Get Protocol and/ Port data
     0.Exit/Quit
     """)
 menu()
@@ -32,13 +31,11 @@ except:
 
 while option != 0:
     if option == 1:
-        print("\n LIVE PACKET CAPTURE STARTED\n")
         Scapy.fullsniff()
     elif option == 2:
-        print("\n CAPTURING DESTINATION IP DATA\n")
-        Scapy.sourceip()
+        Scapy.ip()
     elif option == 3:
-        Scapy.destinip()
+        Scapy.ipv6()
     elif option == 4:
         Scapy.tcp()
     elif option == 5:
@@ -48,9 +45,7 @@ while option != 0:
     elif option == 7:
         Scapy.ethernet()
     elif option == 8:
-        Scapy.ports()
-    elif option == 9:
-        Scapy.http()
+        Scapy.protoport()
     else:
         print("Invalid option. Try again")
         sleep(2)
