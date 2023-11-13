@@ -1,7 +1,12 @@
 '''
-Created on 7 Nov 2023
-
-@author: Kimarley Julal (0704125)
+Faculty of Engineering and Computing (FENC)
+School of Computing and Information Technology (SCIT)
+CIT4020: Computer Security
+Occurrence:
+Lecturer: Mr. Kevin Johnson
+Project: Packet Sniffer
+Date: November 13, 2023
+@author: Kimarley Julal (0704125), Everee Reid (1004481), Micah Brown (1802146)
 '''
 from argparse import _StoreTrueAction
 

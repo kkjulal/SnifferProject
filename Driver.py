@@ -1,7 +1,12 @@
 '''
-Created on 7 Nov 2023
-
-@author: Kimarley Julal (0704125)
+Faculty of Engineering and Computing (FENC)
+School of Computing and Information Technology (SCIT)
+CIT4020: Computer Security
+Occurrence:
+Lecturer: Mr. Kevin Johnson
+Project: Packet Sniffer
+Date: November 13, 2023
+@author: Kimarley Julal (0704125), Everee Reid (1004481), Micah Brown (1802146)
 '''
 import os
 from time import sleep
@@ -19,7 +24,7 @@ def menu():
     5. Get UDP Protocol data
     6. Get WiFi data
     7. Get Ethernet data
-    8. Get Protocol and/ Port data
+    8. Get Protocol and Port data
     0.Exit/Quit
     """)
 menu()

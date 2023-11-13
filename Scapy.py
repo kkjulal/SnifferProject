@@ -1,17 +1,25 @@
 '''
-Created on 7 Nov 2023
-
-@author: Kimarley Julal (0704125)
+Faculty of Engineering and Computing (FENC)
+School of Computing and Information Technology (SCIT)
+CIT4020: Computer Security
+Occurrence:
+Lecturer: Mr. Kevin Johnson
+Project: Packet Sniffer
+Date: November 13, 2023
+@author: Kimarley Julal (0704125), Everee Reid (1004481), Micah Brown (1802146)
 '''
 import scapy.all as scapy
 from scapy.layers.l2 import Ether, ARP
 from scapy.layers.inet import IP, ICMP, TCP
 
-
 def fullsniff(): #performs a full capture of packets
+    global capture
     amt = captureamt()
     print("\n FULL CAPTURE STARTED\n")
-    capture = scapy.sniff(count=amt)
+    try:
+        capture = scapy.sniff(count=amt)
+    except ValueError:
+        print("Invalid entry. Try again.")
     print(capture.show())
     dummysavepdf(capture)
 
@@ -48,15 +56,18 @@ def wifi():
 
 def ethernet():
     amt = captureamt()
-    capture = scapy.sniff(iface="eth0", count=amt)
+    capture = scapy.sniff(iface='eth0', count=amt)
     print(capture.show())
     dummysavepdf(capture)
 
 def protoport():
     amt = captureamt()
-    protocol = input("Enter protocol: ")
-    portnum = input("Enter port: ")
-    capture = scapy.sniff(filter=""+protocol+" port "+portnum+"", count=amt)
+    protocol = input("Enter protocol(http, udp, tcp, etc.): ")
+    portnum = input("Enter port (80, 53, etc.): ")
+    try:
+        capture = scapy.sniff(filter=""+protocol+" port "+portnum+"", count=amt)
+    except:
+        print("Execution failed.")
     print(capture.show())
     dummysavepdf(capture)
 
